@@ -6,7 +6,6 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.mvc.homework.model.AnnouncementDto;
-import com.mvc.homework.model.AnnouncementEntity;
 
 @Service
 public interface AnnouncementService {

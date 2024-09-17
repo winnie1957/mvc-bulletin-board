@@ -37,7 +37,7 @@ public class AnnouncementController {
 //		return ResponseEntity.ok("User created successfully.");
 //	}
 	
-	@RequestMapping(value="/")
+	@RequestMapping(method = RequestMethod.GET, value="/")
 	public ModelAndView list(HttpServletResponse response) {
 		List<AnnouncementDto> announcements = announcementService.getAllAnnouncements();
 		return new ModelAndView("announcements", "announcements", announcements);

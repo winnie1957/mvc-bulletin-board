@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.mvc.homework.model.AnnouncementDto;
@@ -28,7 +29,7 @@ public class HomeController {
 		this.announcementService = announcementService;
 	}
 
-	@RequestMapping(value="/")
+	@RequestMapping(method = RequestMethod.GET, value="/")
 	public ModelAndView home(HttpServletResponse response) throws IOException{
 		List<AnnouncementDto> announcements = announcementService.getAllAnnouncements();
 		

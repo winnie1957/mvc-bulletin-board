@@ -11,7 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
- * 公告
+ * 
  * @author winnie1957
  *
  */
@@ -23,23 +23,18 @@ public class AnnouncementEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    // 標題
     @Column(name = "title")
     private String title;
     
-    // 公布內容
     @Column(name = "content")
     private String content;
     
-    // 公布者
     @Column(name = "publish_by")
     private String publishBy;
     
-    // 發佈日期
     @Column(name = "publish_at")
     private LocalDate publishAt;
     
-    // 截止日期
     @Column(name = "closed_at")
     private LocalDate closedAt;
 

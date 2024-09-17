@@ -22,6 +22,7 @@ public class AnnouncementDaoImpl implements AnnouncementDao {
 		this.sessionFactory = HibernateUtil.getSessionFactory();
 	}
     
+	@Override
     public Optional<AnnouncementEntity> findById(Long id) {
         Session session = sessionFactory.getCurrentSession();
         Transaction tx = null;
@@ -41,16 +42,16 @@ public class AnnouncementDaoImpl implements AnnouncementDao {
 			}
 		}
 //        AnnouncementEntity entity = session.get(AnnouncementEntity.class, id);
-        session.close();
+//        session.close();
         return Optional.ofNullable(entity);
     }
 
+    @Override
     public List<AnnouncementEntity> findAll() {
         Session session = sessionFactory.getCurrentSession();
         Transaction tx = null;
         String hql = "from AnnouncementEntity";
         List<AnnouncementEntity> entites = null;
-        
         try {
 
         	tx = session.beginTransaction();
@@ -66,18 +67,19 @@ public class AnnouncementDaoImpl implements AnnouncementDao {
 		}
 //        String hql = "from AnnouncementEntity";
 //        List<AnnouncementEntity> entites = session.createQuery(hql, AnnouncementEntity.class).list();
-        session.close();
+//        session.close();
+        
         return entites;
     }
     
-    public Object save(AnnouncementEntity entity) {
+    @Override
+    public void save(AnnouncementEntity entity) {
         Session session = sessionFactory.getCurrentSession();
         Transaction tx = null;
-        Object key = null; 
         try {
 			
         	tx = session.beginTransaction();
-        	key = session.save(entity);
+        	session.save(entity);
         	tx.commit();
         	
 		} catch (Exception e) {
@@ -88,15 +90,16 @@ public class AnnouncementDaoImpl implements AnnouncementDao {
 				throw new RuntimeException(e.getMessage(), e);
 			}
 		}
-//        Object key = session.save(entity);
-        session.close();
-        return key;
+        
+//        session.close();
+        return;
     }
 
 	@Override
 	public void update(AnnouncementEntity entity) {
         Session session = sessionFactory.getCurrentSession();
         Transaction tx = null;
+        
         try {
 
         	tx = session.beginTransaction();
@@ -110,7 +113,8 @@ public class AnnouncementDaoImpl implements AnnouncementDao {
 				throw new RuntimeException(e.getMessage(), e);
 			}
 		}
-        session.close();
+        
+//        session.close();
         return;
 	}
 
@@ -131,11 +135,12 @@ public class AnnouncementDaoImpl implements AnnouncementDao {
 				tx.rollback();
 			}else {
 				throw new RuntimeException(
-					String.format("刪除 ID=%s 的 AnnouncementEntity 發生異常", id), 
+					String.format("delete ID=%s AnnouncementEntity fail", id), 
 					e);
 			}
 		}
-        session.close();
+        
+//        session.close();
         return;
 	}
 	

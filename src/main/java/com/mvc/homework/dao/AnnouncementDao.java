@@ -12,7 +12,7 @@ public interface AnnouncementDao {
 	
 	Optional<AnnouncementEntity> findById(Long id);
 	List<AnnouncementEntity> findAll();
-	Object save(AnnouncementEntity entity);
+	void save(AnnouncementEntity entity);
 	void update(AnnouncementEntity entity);
 	void delete(Long id);
 	    

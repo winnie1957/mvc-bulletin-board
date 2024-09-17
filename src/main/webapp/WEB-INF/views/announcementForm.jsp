@@ -1,21 +1,11 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
-<!DOCTYPE HTML PUBLIC 
-  "-//W3C//DTD HTML 4.01 Transitional//EN" 
-  "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html xmlns:th="http://www.thymeleaf.org" lang="en" class="h-100">
-	<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Hugo 0.83.1">
+  <head>
+	<%@ include file="layout/meta.jsp" %>
     <title>My Bulletin Board</title>
-    <!-- Bootstrap core CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
-    <!-- Custom CSS -->
-    <!-- <link href="../scss/all.css" rel="stylesheet"> -->
+	<%@ include file="layout/link.jsp" %>
   </head>
   <body>
     
@@ -25,8 +15,8 @@
     <!-- 標題 -->
     <div class="pt-3 pb-2 mb-3 border-bottom">
       <div class="bg-light p-5 rounded">
-        <h1>Hello World! Welcome to <span class="text-primary">My Bulletin Board</span></h1>
-        <p>練習用。</p>
+        <h1>Hello, <b>${user.username}</b> ! Welcome to <span class="text-primary">My Bulletin Board</span></h1>
+        <p>公告管理-編輯</p>
       </div>
     </div>
     <h2 class="text-center">${announcement.id == null ? 'Create' : 'Edit'} a announcement!</h2>
@@ -75,28 +65,6 @@
 
 	    
      
-    <!-- bootstrap js -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
-    <!-- javascript --><!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-    <!-- <script src="../js/all.js"></script> -->
-	<!-- textarea editor -->
-    <script src="https://cdn.tiny.cloud/1/qagffr3pkuv17a8on1afax661irst1hbr4e6tbv888sz91jc/tinymce/7/tinymce.min.js"></script>
-    <script type="text/javascript">
-    tinymce.init({
-    	  selector: 'textarea#recipient-content',
-    	  height: 500,
-    	  plugins: [
-    	    'advlist', 'autolink', 'lists', 'link', 'image', 'charmap', 'preview',
-    	    'anchor', 'searchreplace', 'visualblocks', 'code', 'fullscreen',
-    	    'insertdatetime', 'media', 'table', 'help', 'wordcount'
-    	  ],
-    	  toolbar: 'undo redo | blocks | ' +
-    	  'bold italic backcolor | alignleft aligncenter ' +
-    	  'alignright alignjustify | bullist numlist outdent indent | ' +
-    	  'removeformat | help',
-    	  content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:16px }'
-    	});
-    </script>
+	<%@ include file="layout/script.jsp" %>
     </body>
 </html>

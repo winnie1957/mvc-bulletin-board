@@ -8,16 +8,12 @@ public class AnnouncementDto {
 	private Long id;
 	private String title;
     
-    // 公布內容
-    private String content;
+	private String content;
     
-    // 公布者
     private String publishBy;
     
-    // 發佈日期
     private String publishDate;
     
-    // 截止日期
     private String closedDate;
 	
 
